@@ -1,0 +1,37 @@
+{
+    "name": "coolui-cli",
+    "version": "1.2.0",
+    "description": "A cli for coolui",
+    "main": "index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "bin": {
+        "coolui": "./bin/coolui.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wzs28150/coolui-cli.git"
+    },
+    "keywords": [
+        "weapp",
+        "cli",
+        "coolui",
+        "template",
+        "generate"
+    ],
+    "author": "wzs",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/wzs28150/coolui-cli/issues"
+    },
+    "homepage": "https://github.com/wzs28150/coolui-cli#readme",
+    "dependencies": {
+        "chalk": "^2.1.0",
+        "commander": "^2.11.0",
+        "fs-extra": "^4.0.2"
+    }
+}
