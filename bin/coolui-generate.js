@@ -4,7 +4,7 @@
  * @Author: wzs
  * @Date: 2020-04-14 17:15:05
  * @LastEditors: wzs
- * @LastEditTime: 2020-04-14 19:22:42
+ * @LastEditTime: 2020-04-14 19:24:56
  * @Description: 
  */
 const program = require('commander');
@@ -26,7 +26,7 @@ program
 program
 .command('init')
 .description('init weapp')
-.alias('g')
+.alias('i')
 .action(function(type, name){
     cooluii.run(name);
 });
