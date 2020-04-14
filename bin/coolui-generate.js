@@ -4,13 +4,13 @@
  * @Author: wzs
  * @Date: 2020-04-14 17:15:05
  * @LastEditors: wzs
- * @LastEditTime: 2020-04-14 17:21:25
+ * @LastEditTime: 2020-04-14 19:22:42
  * @Description: 
  */
 const program = require('commander');
 const chalk = require('chalk')
-const coolui = require('../src/generate');
-
+const cooluig = require('../src/generate');
+const cooluii = require('../src/init');
 
 /**
  * Usage.
@@ -18,9 +18,16 @@ const coolui = require('../src/generate');
 
 program
 .command('generate')
-.description('quick generate your file')
+.description('quick create')
 .alias('g')
 .action(function(type, name){
-    coolui.run(type, name);
+    cooluig.run(type, name);
+});
+program
+.command('init')
+.description('init weapp')
+.alias('g')
+.action(function(type, name){
+    cooluii.run(name);
 });
 program.parse(process.argv);

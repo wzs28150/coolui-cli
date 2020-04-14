@@ -1,0 +1,11 @@
+<view>
+	<block wx:if="{{!hasUserInfo && canIUse}}">
+		<!-- <button class="dologin" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> -->
+		<button class="dologin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+			<slot name="nLogin"></slot>
+		</button>
+	</block>
+	<block wx:else>
+		<slot name="Login"></slot>
+	</block>
+</view>

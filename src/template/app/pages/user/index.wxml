@@ -1,0 +1,37 @@
+<view>
+	<view class="user-top">
+		<view class="user-info">
+			<van-skeleton title row avatar avatar-size="80rpx" row-width="20%" title-width="20%" loading="{{loading}}">
+				<loginPannel bind:getUserInfo="getUserInfo">
+					<view slot="nLogin">
+						<view class="container nLogin">
+							<van-image round width="80rpx" height="80rpx" use-loading-slot lazy-load>
+								<van-icon slot="loading" size="40rpx" name="manager-o" />
+							</van-image>
+							<view class="inner">
+								<view class="name">
+									请登录
+								</view>
+							</view>
+						</view>
+					</view>
+					<view slot="Login">
+						<view class="container">
+							<van-image round width="80rpx" height="80rpx" lazy-load use-loading-slot>
+								<open-data style="width:80rpx;height:80rpx" type="userAvatarUrl" slot="loading"></open-data>
+							</van-image>
+							<view class="inner">
+								<view class="name">
+									<open-data type="userNickName" lang="zh_CN"></open-data>
+								</view>
+								<view class="tel">
+									<van-icon name="phone-circle-o" style="font-size: 24rpx; margin-right: 5rpx" /> {{userInfo}}
+								</view>
+							</view>
+						</view>
+					</view>
+				</loginPannel>
+			</van-skeleton>
+		</view>
+	</view>
+</view>

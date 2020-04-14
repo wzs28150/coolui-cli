@@ -1,0 +1,66 @@
+.user-top {
+    background-color: #fff;
+
+    .user-info {
+        padding: 25rpx 0 30rpx;
+
+        .container,
+        .van-skeleton {
+            padding: 0 30rpx;
+
+            .van-skeleton__title {
+                height: 32rpx;
+            }
+
+            .van-skeleton__avatar+.van-skeleton__content {
+                padding-top: 8rpx;
+            }
+
+            .van-skeleton__title+.van-skeleton__row {
+                margin-top: 8rpx;
+                height    : 24rpx;
+            }
+        }
+
+        .container {
+            display: flex;
+
+            .van-image {
+                display: block;
+            }
+
+            .inner {
+                padding-left: 20rpx;
+                height      : 80rpx;
+                text-align  : left;
+
+                .name {
+                    font-size  : 32rpx;
+                    line-height: 32rpx;
+                    padding-top: 6rpx;
+                }
+
+                .tel {
+                    font-size  : 24rpx;
+                    line-height: 24rpx;
+                    display    : flex;
+                    align-items: center;
+                    color      : #666666;
+                    margin-top : 12rpx;
+                }
+            }
+
+            &.nLogin {
+                .inner {
+                    display    : flex;
+                    align-items: center;
+
+                    .name {
+                        padding: 0;
+                    }
+                }
+            }
+        }
+    }
+
+}
