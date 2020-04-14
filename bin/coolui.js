@@ -17,9 +17,9 @@ program
     .version(require('../package').version, '-v, --version')
     .usage('<cmd> [project-name]')
     .option('-m, --mirror <mirror>', 'Select mirror like: npm, cnpm, taobao', /^(npm|cnpm|taobao|nj|rednpm|skimdb|yarn)$/i)
-    .option('-c, --createComponents <name>', 'Select mirror like: npm, cnpm, taobao', createComponents)
-    .option('-p, --createPage <name>', 'Select mirror like: npm, cnpm, taobao', createPage)
-    .option('-a, --createApi <name>', 'Select mirror like: npm, cnpm, taobao', createApi)
+    .option('-c, --createComponents <name>', 'create a Components', createComponents)
+    .option('-p, --createPage <name>', 'create a Page', createPage)
+    .option('-a, --createApi <name>', 'create a Api', createApi)
     .option('-l, --language <language>', 'Select language: en / cn', selectLanguage)
     .on('-h, --help', help)
 

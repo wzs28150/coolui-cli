@@ -69,6 +69,14 @@ function init(args) {
                             if (err) return console.log(err)
                         })
                     }
+                    if (existsSync(join(dest, '.git'))) {
+                        fs.rmdir(join(dest, '.git'),function(error){
+                            if(error){
+                                console.log(error);
+                                return false;
+                            }
+                        })
+                    }
                     // change a package name as a project name if package.json exist
                     if (existsSync(join(dest, 'package.json'))) {
                         // eslint-disable-next-line
@@ -109,10 +117,12 @@ function init(args) {
         console.log('跳转目录')
         success(`cd ${projectName}`)
         console.log()
-        console.log('安装依赖')
-        success('npm install or npm i')
         console.log('生成页面')
-        success('coolui install or npm i')
+        success('coolui -p [name]')
+        console.log('生成组件')
+        success('coolui -c [name]')
+        console.log('生成接口')
+        success('coolui -a [name]')
         console.log()
         success(`恭喜你! "${projectName}"项目初始化成功! `)
         console.log()
