@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "标题",
-   "usingComponents": {
-    "van-skeleton": "/@vant/weapp/skeleton/index",
-    "van-image": "/@vant/weapp/image/index",
-    "van-icon": "/@vant/weapp/icon/index",
-    "loginPannel": "/components/cool/loginPannel/loginPannel",
-  }
-}
