@@ -51,23 +51,33 @@ function init(args) {
     switch (templateName) {
       case "weapp":
         url = "https://github.com/wzs28150/coolui-weapp.git";
+        weapp(url);
         break;
       case "pc-m":
         url = "https://github.com/wzs28150/coolui-weapp.git";
+        weapp(url);
         break;
       case "pc-s":
         url = "https://github.com/wzs28150/coolui-weapp.git";
+        weapp(url);
         break;
       case "wap-m":
         url = "https://github.com/wzs28150/coolui-weapp.git";
+        weapp(url);
         break;
       case "wap-s":
         url = "https://github.com/wzs28150/coolui-weapp.git";
+        weapp(url);
         break;
       default:
         url = "https://github.com/wzs28150/coolui-weapp.git";
+        weapp(url);
         break;
     }
+  }
+
+  function weapp(url) {
+
     const { status, error: cloneError } = spawn.sync("git", [
       "clone",
       "--depth=1",
@@ -127,7 +137,7 @@ function init(args) {
       }
     } else {
       // if incorrect template name
-      error(`模板 ${templateName} 不存在`);
+      error(`安装失败请重试!`);
     }
   }
 
@@ -154,19 +164,13 @@ function init(args) {
 
   function done() {
     console.log();
+    success(`跳转目录: cd ${projectName}`);
     console.log();
-    console.log("跳转目录:");
-    success(`cd ${projectName}`);
+    success("生成页面: coolui -p [name]");
     console.log();
-    console.log("生成页面:");
-    success("coolui -p [name]");
+    success("生成组件: coolui -c [name]");
     console.log();
-    console.log("生成组件:");
-    success("coolui -c [name]");
-    console.log();
-    console.log("生成接口:");
-    success("coolui -a [name]");
-    console.log();
+    success("生成接口: coolui -a [name]");
     console.log();
     success(`恭喜你! "${projectName}"项目初始化成功! `);
     console.log();

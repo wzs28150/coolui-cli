@@ -135,61 +135,83 @@ function isInitTemplate(cmd) {
   return /init-(.)+/.test(cmd) && /init-([^\ ]+)/.exec(cmd)[1];
 }
 
-function createComponents(name) {
-  const pageFile = "./components/" + name;
-  const wxmlFile = "./components/" + name + "/" + name + ".wxml";
-  const jsonFile = "./components/" + name + "/" + name + ".json";
-  const styleFile = "./components/" + name + "/" + name + ".less";
-  const jsFile = "./components/" + name + "/" + name + ".js";
-  const wxssFile = "./components/" + name + "/" + name + ".wxss";
-  fs.exists(pageFile, (err, exists) => {
+function getcoolconfig(callback) {
+  const config = "./coolui.json";
+  fs.readFile(config, "utf8", function (err, data) {
     if (err) {
-      console.log("该页面已存在!");
+      console.log("缺少项目配置文件cooui.json!");
     } else {
-      fs.mkdir("./components/" + name + "/", 0777, function (err) {
+      const configarr = JSON.parse(data);
+      if (!configarr.type) {
+        console.log("缺少必要参数type!");
+      } else {
+        if (callback) callback(configarr.type);
+      }
+    }
+  });
+}
+
+function createComponents(name) {
+  getcoolconfig(function (type) {
+    if (type == "weapp") {
+      const pageFile = "./components/" + name;
+      const wxmlFile = "./components/" + name + "/" + name + ".wxml";
+      const jsonFile = "./components/" + name + "/" + name + ".json";
+      const styleFile = "./components/" + name + "/" + name + ".less";
+      const jsFile = "./components/" + name + "/" + name + ".js";
+      const wxssFile = "./components/" + name + "/" + name + ".wxss";
+      fs.exists(pageFile, (err, exists) => {
         if (err) {
-          console.log("文件夹创建失败,请检查是否已存在!");
+          console.log("该页面已存在!");
         } else {
-          fs.copyFile(
-            __dirname + "/../src/template/components.wxml",
-            wxmlFile,
-            (err) => {
-              if (err) return console.error(err);
-              console.log(wxmlFile + "  创建成功!");
+          fs.mkdir("./components/" + name + "/", 0777, function (err) {
+            if (err) {
+              console.log("文件夹创建失败,请检查是否已存在!");
+            } else {
+              console.log();
+              fs.copyFile(
+                __dirname + "/../src/template/components.wxml",
+                wxmlFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(wxmlFile + "  创建成功!");
+                }
+              );
+              fs.copyFile(
+                __dirname + "/../src/template/components.json",
+                jsonFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(jsonFile + "  创建成功!");
+                }
+              );
+              fs.copyFile(
+                __dirname + "/../src/template/components.less",
+                styleFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(styleFile + "  创建成功!");
+                }
+              );
+              fs.copyFile(
+                __dirname + "/../src/template/components.js",
+                jsFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(jsFile + "    创建成功!");
+                }
+              );
+              fs.copyFile(
+                __dirname + "/../src/template/components.wxss",
+                wxssFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(wxssFile + "  创建成功!");
+                  console.log();
+                }
+              );
             }
-          );
-          fs.copyFile(
-            __dirname + "/../src/template/components.json",
-            jsonFile,
-            (err) => {
-              if (err) return console.error(err);
-              console.log(jsonFile + "  创建成功!");
-            }
-          );
-          fs.copyFile(
-            __dirname + "/../src/template/components.less",
-            styleFile,
-            (err) => {
-              if (err) return console.error(err);
-              console.log(styleFile + "  创建成功!");
-            }
-          );
-          fs.copyFile(
-            __dirname + "/../src/template/components.js",
-            jsFile,
-            (err) => {
-              if (err) return console.error(err);
-              console.log(jsFile + "    创建成功!");
-            }
-          );
-          fs.copyFile(
-            __dirname + "/../src/template/components.wxss",
-            wxssFile,
-            (err) => {
-              if (err) return console.error(err);
-              console.log(wxssFile + "  创建成功!");
-            }
-          );
+          });
         }
       });
     }
@@ -198,56 +220,78 @@ function createComponents(name) {
 }
 
 function createPage(name) {
-  const pageFile = "./pages/" + name;
-  const wxmlFile = "./pages/" + name + "/" + name + ".wxml";
-  const jsonFile = "./pages/" + name + "/" + name + ".json";
-  const styleFile = "./pages/" + name + "/" + name + ".less";
-  const jsFile = "./pages/" + name + "/" + name + ".js";
-  const wxssFile = "./pages/" + name + "/" + name + ".wxss";
-  fs.exists(pageFile, (err, exists) => {
-    if (err) {
-      console.log("该页面已存在!");
-    } else {
-      fs.mkdir("./pages/" + name + "/", 0777, function (err) {
+  getcoolconfig(function (type) {
+    if (type == "weapp") {
+      const appFile = "./app.json";
+      const pageFile = "./pages/" + name;
+      const wxmlFile = "./pages/" + name + "/" + name + ".wxml";
+      const jsonFile = "./pages/" + name + "/" + name + ".json";
+      const styleFile = "./pages/" + name + "/" + name + ".less";
+      const jsFile = "./pages/" + name + "/" + name + ".js";
+      const wxssFile = "./pages/" + name + "/" + name + ".wxss";
+      fs.exists(pageFile, (err, exists) => {
         if (err) {
-          console.log("文件夹创建失败,请检查是否已存在!");
+          console.log("该页面已存在!");
         } else {
-          fs.copyFile(
-            __dirname + "/../src/template/page.wxml",
-            wxmlFile,
-            (err) => {
-              if (err) return console.error(err);
-              console.log(wxmlFile + "  创建成功!");
+          fs.mkdir("./pages/" + name + "/", 0777, function (err) {
+            if (err) {
+              console.log("文件夹创建失败,请检查是否已存在!");
+            } else {
+              fs.copyFile(
+                __dirname + "/../src/template/page.wxml",
+                wxmlFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(wxmlFile + "  创建成功!");
+                }
+              );
+              fs.copyFile(
+                __dirname + "/../src/template/page.json",
+                jsonFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(jsonFile + "  创建成功!");
+                }
+              );
+              fs.copyFile(
+                __dirname + "/../src/template/page.less",
+                styleFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(styleFile + "  创建成功!");
+                }
+              );
+              fs.copyFile(
+                __dirname + "/../src/template/page.js",
+                jsFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(jsFile + "    创建成功!");
+                }
+              );
+              fs.copyFile(
+                __dirname + "/../src/template/page.wxss",
+                wxssFile,
+                (err) => {
+                  if (err) return console.error(err);
+                  console.log(wxssFile + "  创建成功!");
+                }
+              );
             }
-          );
-          fs.copyFile(
-            __dirname + "/../src/template/page.json",
-            jsonFile,
-            (err) => {
-              if (err) return console.error(err);
-              console.log(jsonFile + "  创建成功!");
-            }
-          );
-          fs.copyFile(
-            __dirname + "/../src/template/page.less",
-            styleFile,
-            (err) => {
-              if (err) return console.error(err);
-              console.log(styleFile + "  创建成功!");
-            }
-          );
-          fs.copyFile(__dirname + "/../src/template/page.js", jsFile, (err) => {
-            if (err) return console.error(err);
-            console.log(jsFile + "    创建成功!");
           });
-          fs.copyFile(
-            __dirname + "/../src/template/page.wxss",
-            wxssFile,
-            (err) => {
-              if (err) return console.error(err);
-              console.log(wxssFile + "  创建成功!");
+          fs.readFile(appFile, "utf8", function (err, appdata) {
+            const appconfig = JSON.parse(appdata);
+            if (!in_array("pages/" + name + "/" + name, appconfig.pages)) {
+              appconfig.pages.push("pages/" + name + "/" + name);
+              let Content = JSON.stringify(appconfig, null, 4);
+              fs.writeFile(appFile, Content, "utf8", (err) => {
+                if (err) throw err;
+                console.log();
+                console.log("页面创建成功!");
+                console.log();
+              });
             }
-          );
+          });
         }
       });
     }
@@ -255,15 +299,30 @@ function createPage(name) {
   return false;
 }
 
+function in_array(search, array) {
+  for (var i in array) {
+    if (array[i] == search) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function createApi(name) {
-  const jsFile = "./api/" + name + ".js";
-  fs.exists(jsFile, (err, exists) => {
-    if (err) {
-      console.log("该接口已存在");
-    } else {
-      fs.copyFile(__dirname + "/../src/template/api.js", jsFile, (err) => {
-        if (err) return console.error(err);
-        console.log(jsFile + "    创建成功!");
+  getcoolconfig(function (type) {
+    if (type == "weapp") {
+      const jsFile = "./api/" + name + ".js";
+      fs.exists(jsFile, (err, exists) => {
+        if (err) {
+          console.log("该接口已存在");
+        } else {
+          fs.copyFile(__dirname + "/../src/template/api.js", jsFile, (err) => {
+            if (err) return console.error(err);
+            console.log();
+            console.log(jsFile + "    创建成功!");
+            console.log();
+          });
+        }
       });
     }
   });

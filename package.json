@@ -9,9 +9,7 @@
     "bin": {
         "coolui": "./bin/coolui.js"
     },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
+    "scripts": {},
     "repository": {
         "type": "git",
         "url": "git+https://github.com/wzs28150/coolui-cli.git"
