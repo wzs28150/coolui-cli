@@ -1,21 +1,19 @@
 <!--
- * @Descripttion: 
- * @version: 
+ * @Descripttion:
+ * @version:
  * @Author: wzs
  * @Date: 2020-04-14 18:51:05
  * @LastEditors: wzs
- * @LastEditTime: 2020-04-14 18:54:11
+ * @LastEditTime: 2020-04-15 17:12:16
  -->
+
 # coolui-cli
+
 A cli for coolui~
 
-
-一个快速生成页面文件的插件，搭配vue模版使用。  [模版地址](https://github.com/xu455255849/vue-xu)
-
-如果你对模版不是很满意，你完全可以fork一份改造成自己喜欢的模版～
+> 一个快速生成项目的插件
 
 ## 项目结构
-
 
 ```javascript
 .
@@ -27,29 +25,24 @@ A cli for coolui~
 └── test          //测试用例
 ```
 
-## Install 
-  
-  ```javascript
-  $ npm i coolui-cli -g 
+## Install
 
-
+```javascript
+$ npm i coolui-cli -g
 ```
 
 ## Useage
 
-coolui g [type] [name]     
+> 目前只支持小程序,其他项目陆续加入
 
-name为 你需要生成的文件名
-   
-   
-   目前支持的type：
-   
-   * page
-   * component
-  
+* 创建项目： ```coolui i [你的项目名称]``` 自动创建站点文件夹,自动安装依赖
+* 创建页面： ```coolui -p [你的页面名称]``` 自动创建页面所需文件
 
-  
-##  License
+* 创建组件： ```coolui -c [你的组件名称]``` 自动创建组件所需文件  
+
+* 创建接口： ```coolui -a [你的接口名称]``` 自动创建接口所需文件  
+
+## License
 
 Licensed under MIT
 

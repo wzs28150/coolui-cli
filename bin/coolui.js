@@ -6,6 +6,7 @@ const program = require("commander");
 const spawn = require("cross-spawn");
 const inquirer = require("inquirer");
 // const success = require('../src/logger').success
+const info = require("../src/logger").info;
 const options = {
   cmd: "",
   projectName: "",
@@ -40,6 +41,9 @@ program
   .alias("i")
   .description("Initialize a new coolui application in the current folder")
   .action(function (projectName) {
+    console.log();
+    info("欢迎使用cool系统", "请安提示进行操作");
+    console.log()
     return inquirer
       .prompt([
         {
@@ -139,7 +143,7 @@ function getcoolconfig(callback) {
   const config = "./coolui.json";
   fs.readFile(config, "utf8", function (err, data) {
     if (err) {
-      console.log("缺少项目配置文件cooui.json!");
+      console.log("缺少项目配置文件coolui.json!");
     } else {
       const configarr = JSON.parse(data);
       if (!configarr.type) {

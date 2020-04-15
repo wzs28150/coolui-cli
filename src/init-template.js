@@ -138,6 +138,7 @@ function init(args) {
     } else {
       // if incorrect template name
       error(`安装失败请重试!`);
+      console.log()
     }
   }
 
