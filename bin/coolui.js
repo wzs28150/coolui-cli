@@ -182,7 +182,7 @@ function createComponents(name) {
             } else {
               console.log();
               fs.copyFile(
-                __dirname + "/../src/template/components.wxml",
+                __dirname + "/../src/template/weapp/components.wxml",
                 wxmlFile,
                 (err) => {
                   if (err) return console.error(err);
@@ -190,7 +190,7 @@ function createComponents(name) {
                 }
               );
               fs.copyFile(
-                __dirname + "/../src/template/components.json",
+                __dirname + "/../src/template/weapp/components.json",
                 jsonFile,
                 (err) => {
                   if (err) return console.error(err);
@@ -198,7 +198,7 @@ function createComponents(name) {
                 }
               );
               fs.copyFile(
-                __dirname + "/../src/template/components.less",
+                __dirname + "/../src/template/weapp/components.less",
                 styleFile,
                 (err) => {
                   if (err) return console.error(err);
@@ -206,7 +206,7 @@ function createComponents(name) {
                 }
               );
               fs.copyFile(
-                __dirname + "/../src/template/components.js",
+                __dirname + "/../src/template/weapp/components.js",
                 jsFile,
                 (err) => {
                   if (err) return console.error(err);
@@ -214,7 +214,7 @@ function createComponents(name) {
                 }
               );
               fs.copyFile(
-                __dirname + "/../src/template/components.wxss",
+                __dirname + "/../src/template/weapp/components.wxss",
                 wxssFile,
                 (err) => {
                   if (err) return console.error(err);
