@@ -50,41 +50,47 @@ function init(args) {
     let url = "";
     switch (templateName) {
       case "weapp":
-        url = "https://github.com/wzs28150/coolui-weapp.git";
+        url = "http://114.115.177.23:8099/root/coolui-weapp.git";
         weapp(url);
         break;
       case "pc-m":
-        url = "https://github.com/wzs28150/coolui-weapp.git";
+        url = "http://114.115.177.23:8099/root/pc-m.git";
         weapp(url);
         break;
       case "pc-s":
-        url = "https://github.com/wzs28150/coolui-weapp.git";
+        url = "http://114.115.177.23:8099/root/pc-s.git";
         weapp(url);
         break;
       case "wap-m":
-        url = "https://github.com/wzs28150/coolui-weapp.git";
+        url = "http://114.115.177.23:8099/root/wap-m.git";
         weapp(url);
         break;
       case "wap-s":
-        url = "https://github.com/wzs28150/coolui-weapp.git";
+        url = "http://114.115.177.23:8099/root/wap-s.git";
+        weapp(url);
+        break;
+      case "tp5":
+        url = "http://114.115.177.23:8099/root/tp5.git";
+        weapp(url);
+        break;
+      case "tp6":
+        url = "http://114.115.177.23:8099/root/tp6.git";
         weapp(url);
         break;
       default:
-        url = "https://github.com/wzs28150/coolui-weapp.git";
+        url = "http://114.115.177.23:8099/root/coolui-weapp.git";
         weapp(url);
         break;
     }
   }
 
   function weapp(url) {
-
     const { status, error: cloneError } = spawn.sync("git", [
       "clone",
       "--depth=1",
       url,
       customPrjName || ".",
     ]);
-
     // verify git clone succeed
     if (!cloneError && status === 0) {
       try {
@@ -138,7 +144,6 @@ function init(args) {
     } else {
       // if incorrect template name
       error(`安装失败请重试!`);
-      console.log()
     }
   }
 

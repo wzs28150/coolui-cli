@@ -73,6 +73,14 @@ program
               name: "5. wap单页面",
               value: "wap-s",
             },
+            {
+              name: "6. coolphp tp5.0版",
+              value: "tp5",
+            },
+            {
+              name: "7. coolphp tp6.0版",
+              value: "tp6",
+            },
           ],
         },
       ])
