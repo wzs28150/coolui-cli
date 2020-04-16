@@ -250,7 +250,7 @@ function createPage(name) {
               console.log("文件夹创建失败,请检查是否已存在!");
             } else {
               fs.copyFile(
-                __dirname + "/../src/template/page.wxml",
+                __dirname + "/../src/template/weapp/page.wxml",
                 wxmlFile,
                 (err) => {
                   if (err) return console.error(err);
@@ -258,7 +258,7 @@ function createPage(name) {
                 }
               );
               fs.copyFile(
-                __dirname + "/../src/template/page.json",
+                __dirname + "/../src/template/weapp/page.json",
                 jsonFile,
                 (err) => {
                   if (err) return console.error(err);
@@ -266,7 +266,7 @@ function createPage(name) {
                 }
               );
               fs.copyFile(
-                __dirname + "/../src/template/page.less",
+                __dirname + "/../src/template/weapp/page.less",
                 styleFile,
                 (err) => {
                   if (err) return console.error(err);
@@ -274,7 +274,7 @@ function createPage(name) {
                 }
               );
               fs.copyFile(
-                __dirname + "/../src/template/page.js",
+                __dirname + "/../src/template/weapp/page.js",
                 jsFile,
                 (err) => {
                   if (err) return console.error(err);
@@ -282,7 +282,7 @@ function createPage(name) {
                 }
               );
               fs.copyFile(
-                __dirname + "/../src/template/page.wxss",
+                __dirname + "/../src/template/weapp/page.wxss",
                 wxssFile,
                 (err) => {
                   if (err) return console.error(err);
@@ -328,7 +328,7 @@ function createApi(name) {
         if (err) {
           console.log("该接口已存在");
         } else {
-          fs.copyFile(__dirname + "/../src/template/api.js", jsFile, (err) => {
+          fs.copyFile(__dirname + "/../src/template/weapp/api.js", jsFile, (err) => {
             if (err) return console.error(err);
             console.log();
             console.log(jsFile + "    创建成功!");
