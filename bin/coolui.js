@@ -53,32 +53,31 @@ program
           default: true,
           choices: [
             {
-              name: "1. 小程序",
+              name: "1. 小程序 v1.0.0",
               value: "weapp",
             },
             {
-              name: "2. pc多页面",
+              name: "2. pc多页面 v1.0.0",
               value: "pc-m",
             },
-            ,
             {
-              name: "3. pc单页面",
+              name: "3. pc单页面 (待完善)",
               value: "pc-s",
             },
             {
-              name: "4. wap多页面",
+              name: "4. wap多页面 (待完善)",
               value: "wap-m",
             },
             {
-              name: "5. wap单页面",
+              name: "5. wap单页面 (待完善)",
               value: "wap-s",
             },
             {
-              name: "6. coolphp tp5.0版",
+              name: "6. coolphp tp5.0版 v1.0.0",
               value: "tp5",
             },
             {
-              name: "7. coolphp tp6.0版",
+              name: "7. coolphp tp6.0版 (待完善)",
               value: "tp6",
             },
           ],

@@ -48,6 +48,7 @@ function init(args) {
         dest
     );
     let url = "";
+    // console.log(templateName)
     switch (templateName) {
       case "weapp":
         url = "http://114.115.177.23:8099/root/coolui-weapp.git";
@@ -55,7 +56,7 @@ function init(args) {
         break;
       case "pc-m":
         url = "http://114.115.177.23:8099/root/pc-m.git";
-        weapp(url);
+        pcm(url);
         break;
       case "pc-s":
         url = "http://114.115.177.23:8099/root/pc-s.git";
@@ -63,7 +64,7 @@ function init(args) {
         break;
       case "wap-m":
         url = "http://114.115.177.23:8099/root/wap-m.git";
-        weapp(url);
+        wapm(url);
         break;
       case "wap-s":
         url = "http://114.115.177.23:8099/root/wap-s.git";
@@ -71,7 +72,7 @@ function init(args) {
         break;
       case "tp5":
         url = "http://114.115.177.23:8099/root/tp5.git";
-        weapp(url);
+        tp5(url);
         break;
       case "tp6":
         url = "http://114.115.177.23:8099/root/tp6.git";
@@ -147,6 +148,196 @@ function init(args) {
     }
   }
 
+  function tp5(url) {
+    const { status, error: cloneError } = spawn.sync("git", [
+      "clone",
+      "--depth=1",
+      url,
+      customPrjName || ".",
+    ]);
+    // verify git clone succeed
+    if (!cloneError && status === 0) {
+      try {
+        try {
+          // change a project name if project.config.json exist
+          if (existsSync(join(dest, "project.config.json"))) {
+            // eslint-disable-next-line
+            const appProjectJson = require(join(dest, "project.config.json"));
+            appProjectJson.projectname = projectName;
+            fs.writeFile(
+              join(dest, "project.config.json"),
+              JSON.stringify(appProjectJson, null, 2),
+              (err) => {
+                if (err) return console.log(err);
+              }
+            );
+          }
+          // change a package name as a project name if package.json exist
+          if (existsSync(join(dest, "package.json"))) {
+            // eslint-disable-next-line
+            const appPackage = require(join(dest, "package.json"));
+            appPackage.name = projectName;
+            fs.writeFile(
+              join(dest, "package.json"),
+              JSON.stringify(appPackage, null, 2),
+              (err) => {
+                if (err) return console.log(err);
+              }
+            );
+            process.chdir(customPrjName || ".");
+
+            // install ndoe package modules
+            info("正在安装依赖", "你可以使用 ctrl + c 退出，然后自行安装。");
+            console.log();
+            require("./install")(mirror, done); // npm install
+          } else {
+            tp5done();
+          }
+          // remove .git
+          const gitPath = join(dest, ".git");
+          if (existsSync(gitPath)) {
+            // spawn.sync("rm", ["-rf", gitPath]);
+            delDir(gitPath);
+          }
+        } catch (e) {
+          console.log(error(e));
+        }
+      } catch (e) {
+        console.log(error(e));
+      }
+    } else {
+      // if incorrect template name
+      error(`安装失败请重试!`);
+    }
+  }
+
+  function pcm(url) {
+    const { status, error: cloneError } = spawn.sync("git", [
+      "clone",
+      "--depth=1",
+      url,
+      customPrjName || ".",
+    ]);
+    // verify git clone succeed
+    if (!cloneError && status === 0) {
+      try {
+        try {
+          // change a project name if project.config.json exist
+          if (existsSync(join(dest, "project.config.json"))) {
+            // eslint-disable-next-line
+            const appProjectJson = require(join(dest, "project.config.json"));
+            appProjectJson.projectname = projectName;
+            fs.writeFile(
+              join(dest, "project.config.json"),
+              JSON.stringify(appProjectJson, null, 2),
+              (err) => {
+                if (err) return console.log(err);
+              }
+            );
+          }
+          // change a package name as a project name if package.json exist
+          if (existsSync(join(dest, "package.json"))) {
+            // eslint-disable-next-line
+            const appPackage = require(join(dest, "package.json"));
+            appPackage.name = projectName;
+            fs.writeFile(
+              join(dest, "package.json"),
+              JSON.stringify(appPackage, null, 2),
+              (err) => {
+                if (err) return console.log(err);
+              }
+            );
+            process.chdir(customPrjName || ".");
+
+            // install ndoe package modules
+            info("正在安装依赖", "你可以使用 ctrl + c 退出，然后自行安装。");
+            console.log();
+            require("./install")(mirror, done); // npm install
+          } else {
+            pcmdone();
+          }
+          // remove .git
+          const gitPath = join(dest, ".git");
+          if (existsSync(gitPath)) {
+            // spawn.sync("rm", ["-rf", gitPath]);
+            delDir(gitPath);
+          }
+        } catch (e) {
+          console.log(error(e));
+        }
+      } catch (e) {
+        console.log(error(e));
+      }
+    } else {
+      // if incorrect template name
+      error(`安装失败请重试!`);
+    }
+  }
+
+  function wapm(url) {
+    const { status, error: cloneError } = spawn.sync("git", [
+      "clone",
+      "--depth=1",
+      url,
+      customPrjName || ".",
+    ]);
+    // verify git clone succeed
+    if (!cloneError && status === 0) {
+      try {
+        try {
+          // change a project name if project.config.json exist
+          if (existsSync(join(dest, "project.config.json"))) {
+            // eslint-disable-next-line
+            const appProjectJson = require(join(dest, "project.config.json"));
+            appProjectJson.projectname = projectName;
+            fs.writeFile(
+              join(dest, "project.config.json"),
+              JSON.stringify(appProjectJson, null, 2),
+              (err) => {
+                if (err) return console.log(err);
+              }
+            );
+          }
+          // change a package name as a project name if package.json exist
+          if (existsSync(join(dest, "package.json"))) {
+            // eslint-disable-next-line
+            const appPackage = require(join(dest, "package.json"));
+            appPackage.name = projectName;
+            fs.writeFile(
+              join(dest, "package.json"),
+              JSON.stringify(appPackage, null, 2),
+              (err) => {
+                if (err) return console.log(err);
+              }
+            );
+            process.chdir(customPrjName || ".");
+
+            // install ndoe package modules
+            info("正在安装依赖", "你可以使用 ctrl + c 退出，然后自行安装。");
+            console.log();
+            require("./install")(mirror, done); // npm install
+          } else {
+            wapmdone();
+          }
+          // remove .git
+          const gitPath = join(dest, ".git");
+          if (existsSync(gitPath)) {
+            // spawn.sync("rm", ["-rf", gitPath]);
+            delDir(gitPath);
+          }
+        } catch (e) {
+          console.log(error(e));
+        }
+      } catch (e) {
+        console.log(error(e));
+      }
+    } else {
+      // if incorrect template name
+      error(`安装失败请重试!`);
+    }
+  }
+  
+
   function delDir(p) {
     // 读取文件夹中所有文件及文件夹
     var list = fs.readdirSync(p);
@@ -182,6 +373,56 @@ function init(args) {
     console.log();
     console.log();
   }
+
+  function tp5done() {
+    console.log();
+    success(`跳转目录: cd ${projectName}`);
+    console.log();
+    // success("生成页面: coolui -p [name]");
+    // console.log();
+    // success("生成组件: coolui -c [name]");
+    // console.log();
+    // success("生成接口: coolui -a [name]");
+    // console.log();
+    success(`恭喜你! "${projectName}"项目初始化成功! `);
+    console.log();
+    console.log();
+  }
+
+  function pcmdone() {
+    console.log();
+    success(`跳转目录: cd ${projectName}`);
+    console.log();
+    // success("生成页面: coolui -p [name]");
+    // console.log();
+    // success("生成组件: coolui -c [name]");
+    // console.log();
+    // success("生成接口: coolui -a [name]");
+    // console.log();
+    success(`恭喜你! "${projectName}"项目初始化成功! `);
+    console.log();
+    console.log();
+  }
+
+
+  function wapmdone() {
+    console.log();
+    success(`跳转目录: cd ${projectName}`);
+    console.log();
+    // success("生成页面: coolui -p [name]");
+    // console.log();
+    // success("生成组件: coolui -c [name]");
+    // console.log();
+    // success("生成接口: coolui -a [name]");
+    // console.log();
+    success(`恭喜你! "${projectName}"项目初始化成功! `);
+    console.log();
+    console.log();
+  }
+
+  
+  
+  
 }
 
 module.exports = init;

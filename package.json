@@ -1,6 +1,6 @@
 {
     "name": "coolui-cli",
-    "version": "1.4.4",
+    "version": "1.4.5",
     "description": "A cli for coolui",
     "main": "index.js",
     "directories": {
