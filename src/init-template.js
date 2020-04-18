@@ -409,6 +409,7 @@ function init(args) {
     console.log();
     success(`跳转目录: cd ${projectName}`);
     console.log();
+    const child = spawn('cd', [`cd ${projectName}`], { stdio: 'inherit' });
     // success("生成页面: coolui -p [name]");
     // console.log();
     // success("生成组件: coolui -c [name]");

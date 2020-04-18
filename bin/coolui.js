@@ -3,8 +3,11 @@
 const path = require("path");
 const fs = require("fs");
 const program = require("commander");
-const spawn = require("cross-spawn");
+
+const exec = require('child_process').exec;
+
 const inquirer = require("inquirer");
+const spawn = require("cross-spawn");
 // const success = require('../src/logger').success
 const info = require("../src/logger").info;
 const options = {
@@ -65,7 +68,7 @@ program
               value: "pc-s",
             },
             {
-              name: "4. wap多页面 (待完善)",
+              name: "4. wap多页面 v1.0.0",
               value: "wap-m",
             },
             {

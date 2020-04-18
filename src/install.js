@@ -1,10 +1,19 @@
+/*
+ * @Title: 
+ * @Descripttion: 
+ * @version: 
+ * @Author: wzs
+ * @Date: 2020-04-16 19:22:35
+ * @LastEditors: wzs
+ * @LastEditTime: 2020-04-18 19:57:57
+ */
 const spawn = require('cross-spawn')
 const which = require('which')
 
 module.exports = function(mirror, done) {
     let registry
     let resolved
-    let pkgtool = 'npm'
+    let pkgtool = 'cnpm'
     mirror = mirror.toLowerCase()
     if (mirror === 'yarn' || mirror === 'cnpm') {
         try {
