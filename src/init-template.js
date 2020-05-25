@@ -71,7 +71,7 @@ function init(args) {
         weapp(url);
         break;
       case "tp5":
-        url = "http://114.115.177.23:8099/root/tp5.git";
+        url = "http://114.115.177.23:8099/root/newphp.git";
         tp5(url);
         break;
       case "tp6":
