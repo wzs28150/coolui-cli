@@ -28,7 +28,7 @@ function init(args) {
   console.log(CooluiCli + (!isCn ? " is booting... " : " 正在启动..."));
   console.log(
     CooluiCli +
-      (!isCn ? " will execute init command... " : " 即将执行 init 命令...")
+    (!isCn ? " will execute init command... " : " 即将执行 init 命令...")
   );
   checkAppName(projectName);
   if (existsSync(dest) && !emptyDir.sync(dest)) {
@@ -42,10 +42,10 @@ function init(args) {
   function createApp() {
     console.log(
       chalk.bold.cyan("Coolui CLI") +
-        (!isCn
-          ? " will creating a new Coolui app in "
-          : " 即将创建一个新的应用在 ") +
-        dest
+      (!isCn ?
+        " will creating a new Coolui app in " :
+        " 即将创建一个新的应用在 ") +
+      dest
     );
     let url = "";
     // console.log(templateName)
@@ -59,6 +59,14 @@ function init(args) {
         pcm(url);
         break;
       case "pc-s":
+        url = "http://114.115.177.23:8099/root/pc-s.git";
+        weapp(url);
+        break;
+      case "pc-ssr":
+        url = "http://114.115.177.23:8099/root/pc-s.git";
+        weapp(url);
+        break;
+      case "pc-electron":
         url = "http://114.115.177.23:8099/root/pc-s.git";
         weapp(url);
         break;
@@ -86,7 +94,10 @@ function init(args) {
   }
 
   function weapp(url) {
-    const { status, error: cloneError } = spawn.sync("git", [
+    const {
+      status,
+      error: cloneError
+    } = spawn.sync("git", [
       "clone",
       "--depth=1",
       url,
@@ -149,7 +160,10 @@ function init(args) {
   }
 
   function tp5(url) {
-    const { status, error: cloneError } = spawn.sync("git", [
+    const {
+      status,
+      error: cloneError
+    } = spawn.sync("git", [
       "clone",
       "--depth=1",
       url,
@@ -212,7 +226,10 @@ function init(args) {
   }
 
   function pcm(url) {
-    const { status, error: cloneError } = spawn.sync("git", [
+    const {
+      status,
+      error: cloneError
+    } = spawn.sync("git", [
       "clone",
       "--depth=1",
       url,
@@ -275,7 +292,10 @@ function init(args) {
   }
 
   function wapm(url) {
-    const { status, error: cloneError } = spawn.sync("git", [
+    const {
+      status,
+      error: cloneError
+    } = spawn.sync("git", [
       "clone",
       "--depth=1",
       url,
@@ -315,7 +335,7 @@ function init(args) {
             // install ndoe package modules
             info("正在安装依赖", "你可以使用 ctrl + c 退出，然后自行安装。");
             console.log();
-            require("./install")(mirror, done); // npm install
+            require("./install")(mirror, wapmdone); // npm install
           } else {
             wapmdone();
           }
@@ -336,7 +356,7 @@ function init(args) {
       error(`安装失败请重试!`);
     }
   }
-  
+
 
   function delDir(p) {
     // 读取文件夹中所有文件及文件夹
@@ -409,21 +429,23 @@ function init(args) {
     console.log();
     success(`跳转目录: cd ${projectName}`);
     console.log();
-    const child = spawn('cd', [`cd ${projectName}`], { stdio: 'inherit' });
-    // success("生成页面: coolui -p [name]");
-    // console.log();
-    // success("生成组件: coolui -c [name]");
-    // console.log();
-    // success("生成接口: coolui -a [name]");
+    const child = spawn('cd', [`cd ${projectName}`], {
+      stdio: 'inherit'
+    });
+    success("初始化页面: npm run init(请先配置page.js)");
+    console.log();
+    success("运行开发: npm run dev");
+    console.log();
+    // success("打包并生成压缩包: npm run build");
     // console.log();
     success(`恭喜你! "${projectName}"项目初始化成功! `);
     console.log();
     console.log();
   }
 
-  
-  
-  
+
+
+
 }
 
 module.exports = init;

@@ -14,7 +14,7 @@ const options = {
   cmd: "",
   projectName: "",
   mirror: "default",
-  language: "en",
+  language: "ch",
 };
 
 program
@@ -45,56 +45,44 @@ program
   .description("Initialize a new coolui application in the current folder")
   .action(function (projectName) {
     console.log();
-    info("欢迎使用cool系统", "请安提示进行操作");
+    info("欢迎使用cool系统", "请按照提示进行操作");
     console.log()
     return inquirer
-      .prompt([
-        {
-          type: "list",
-          name: "template",
-          message: "请选择要开发的内容",
-          default: true,
-          choices: [
-            {
-              name: "1. 小程序 v1.0.0",
-              value: "weapp",
-            },
-            {
-              name: "2. pc多页面 v1.0.0",
-              value: "pc-m",
-            },
-            {
-              name: "3. pc单页面 (待完善)",
-              value: "pc-s",
-            },
-            {
-              name: "4. wap多页面 v1.0.0",
-              value: "wap-m",
-            },
-            {
-              name: "5. wap单页面 (待完善)",
-              value: "wap-s",
-            },
-            {
-              name: "6. coolphp tp5.0版 v1.0.0",
-              value: "tp5",
-            },
-            {
-              name: "7. coolphp tp6.0版 (待完善)",
-              value: "tp6",
-            },
-          ],
-        },
-      ])
+      .prompt([{
+        type: "list",
+        name: "type",
+        message: "1.请选择要开发的内容",
+        default: true,
+        choices: [{
+            name: "1. 小程序",
+            value: "weapp",
+          },
+          {
+            name: "2. pc",
+            value: "pc",
+          },
+          {
+            name: "3. 移动端",
+            value: "wap",
+          }, {
+            name: "4. 桌面应用",
+            value: "electron",
+          },
+          {
+            name: "5. web-app",
+            value: "webapp",
+          }, {
+            name: "6. 后端",
+            value: "php",
+          }
+        ],
+      }, ])
       .then((answers) => {
-        require("../src/init-template")({
-          template: answers.template,
-          project: projectName,
-          mirror: options.mirror,
-          language: options.language,
-        });
+        selectdetial(answers.type, projectName)
       });
   });
+
+
 
 program.command("*").action(function (currentCmd) {
   const templateName = isInitTemplate(currentCmd); // verify init-{templateName}
@@ -131,6 +119,113 @@ function switchCommand(cmd, args) {
     require("../src/" + cmd)(args);
   } else {
     setTimeout(program.help, 0);
+  }
+}
+
+function selectdetial(type, projectName) {
+  switch (type) {
+    case 'weapp':
+      require("../src/init-template")({
+        template: type,
+        project: projectName,
+        mirror: options.mirror,
+        language: options.language,
+      });
+      break;
+    case 'pc':
+      console.log();
+      return inquirer
+        .prompt([{
+          type: "list",
+          name: "template",
+          message: "2.请选择要使用的框架",
+          default: true,
+          choices: [{
+              name: "1. pc-jquert框架",
+              value: "pc-m",
+            },
+            {
+              name: "2. pc-vue框架",
+              value: "pc-s",
+            },
+            {
+              name: "3. pc-vue-ssr框架",
+              value: "pc-ssr",
+            }
+          ],
+        }, ])
+        .then((answers) => {
+          require("../src/init-template")({
+            template: answers.template,
+            project: projectName,
+            mirror: options.mirror,
+            language: options.language,
+          });
+        });
+      break;
+    case 'wap':
+      console.log();
+      return inquirer
+        .prompt([{
+          type: "list",
+          name: "template",
+          message: "2.请选择要使用的框架",
+          default: true,
+          choices: [{
+              name: "1. 多页面jquery框架",
+              value: "wap-m",
+            },
+            {
+              name: "3. 单页面vue框架",
+              value: "wap-s",
+            }
+          ],
+        }, ])
+        .then((answers) => {
+          require("../src/init-template")({
+            template: answers.template,
+            project: projectName,
+            mirror: options.mirror,
+            language: options.language,
+          });
+        });
+      break;
+      break;
+    case 'electron':
+      info("待完善", "尽请期待~");
+      break;
+    case 'webapp':
+      info("待完善", "尽请期待~");
+      break;
+    case 'php':
+      console.log();
+      return inquirer
+        .prompt([{
+          type: "list",
+          name: "template",
+          message: "2.请选择要使用的框架",
+          default: true,
+          choices: [{
+              name: "1. tp6",
+              value: "tp6",
+            },
+            {
+              name: "2. tp5",
+              value: "tp5",
+            }
+          ],
+        }, ])
+        .then((answers) => {
+          require("../src/init-template")({
+            template: answers.template,
+            project: projectName,
+            mirror: options.mirror,
+            language: options.language,
+          });
+        });
+      break;
+    default:
+      break;
   }
 }
 
