@@ -145,12 +145,16 @@ function selectdetial(type, projectName) {
               value: "pc-m",
             },
             {
-              name: "2. pc-vue框架",
+              name: "2. pc-vue2框架",
               value: "pc-s",
             },
             {
               name: "3. pc-vue-ssr框架",
               value: "pc-ssr",
+            },
+            {
+              name: "2. pc-vue3-vite",
+              value: "pc-v3",
             }
           ],
         }, ])

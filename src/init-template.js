@@ -62,6 +62,10 @@ function init(args) {
         url = "http://114.115.177.23:8099/root/pc-s.git";
         weapp(url);
         break;
+      case "pc-v3":
+        url = "https://github.com/wzs28150/cool-vue-vite-cli.git";
+        weapp(url);
+        break;
       case "pc-ssr":
         url = "http://114.115.177.23:8099/root/pc-s.git";
         weapp(url);
